@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Codex Perdu - CY-Tech</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      background-color: #0a0a0a;
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMGEwYTBhIi8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMzAiIHN0cm9rZT0iIzFFMUUxRSIgc3Ryb2tlLXdpZHRoPSIwLjUiIGZpbGw9Im5vbmUiLz48L3N2Zz4=');
+      color: #d4af37;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .container {
+      background-color: rgba(10, 10, 10, 0.8);
+      border: 2px solid #d4af37;
+      border-radius: 5px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    h1 {
+      color: #d4af37;
+      font-family: 'Garamond', serif;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .subtitle {
+      font-style: italic;
+      margin-bottom: 30px;
+      font-size: 1.2em;
+    }
+
+    .codex {
+      background-color: rgba(20, 20, 20, 0.9);
+      border: 1px solid #d4af37;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: center;
+      min-height: 150px;
+      border-radius: 5px;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .codex::before,
+    .codex::after {
+      content: "⚜";
+      color: #d4af37;
+      font-size: 1.5em;
+      position: absolute;
+      opacity: 0.5;
+    }
+
+    .codex::before {
+      top: 10px;
+      left: 10px;
+    }
+
+    .codex::after {
+      bottom: 10px;
+      right: 10px;
+    }
+
+    input[type="text"] {
+      background-color: rgba(20, 20, 20, 0.7);
+      color: #d4af37;
+      border: 1px solid #d4af37;
+      padding: 12px;
+      width: 60%;
+      font-family: 'Garamond', serif;
+      margin: 10px 0;
+      text-align: center;
+      font-size: 18px;
+      letter-spacing: 2px;
+    }
+
+    button {
+      background-color: rgba(20, 20, 20, 0.9);
+      color: #d4af37;
+      border: 1px solid #d4af37;
+      padding: 10px 30px;
+      margin-top: 15px;
+      cursor: pointer;
+      font-family: 'Garamond', serif;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    button:hover {
+      background-color: #d4af37;
+      color: #000;
+    }
+
+    .success-message {
+      color: #d4af37;
+      font-weight: bold;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    .error-message {
+      color: #8B0000;
+    }
+
+    .secret-word {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 20px 0;
+      letter-spacing: 3px;
+      color: #fff;
+      text-shadow: 0 0 5px #d4af37;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #d4af37, 0 0 10px #d4af37;
+      }
+
+      to {
+        text-shadow: 0 0 10px #d4af37, 0 0 20px #d4af37, 0 0 30px #d4af37;
+      }
+    }
+
+    .cytech-logo {
+      opacity: 0.2;
+      position: absolute;
+      width: 150px;
+      height: auto;
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .next-clue {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: rgba(20, 20, 20, 0.8);
+      border: 1px dashed #d4af37;
+    }
+
+    .historical-note {
+      font-style: italic;
+      font-size: 0.9em;
+      text-align: justify;
+      margin: 20px 0;
+      color: #a08a38;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Le Codex Perdu</h1>
+    <p class="subtitle">Les secrets de l'accréditation CY-Tech</p>
+
+    <div class="codex" id="codex">
+      <p>Mon premier est un prénom proche d’une ville égyptienne</p>
+        <p> Mon second est devoir au participe passé</p>
+        <p> Mon troisieme est le sommet d’un bateau</p><br>
+        <p> (Audio à écouter ⬇️)</p>
+    </div>
+
+<audio controls style="margin-top: 15px;">
+  <source src="audioenigme.mp3" type="audio/mpeg">
+  Votre navigateur ne supporte pas la lecture audio.
+</audio>
+
+
+    <form onsubmit="checkCode(event)">
+      <input type="text" id="codeInput" placeholder="ENTREZ LE CODE" maxlength="25" required />
+      <br />
+      <button type="submit">Confirmer la réponse</button>
+    </form>
+
+    <div class="cytech-logo">
+      <svg width="150" height="150" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="#d4af37" stroke-width="2" />
+        <text x="50" y="55" text-anchor="middle" fill="#d4af37" font-family="serif" font-size="12">CY-TECH</text>
+        <path d="M30,40 L70,40 L70,60 L30,60 Z" fill="none" stroke="#d4af37" stroke-width="1" />
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    const codes_valides = ['alexandre dumas'];
+    const mot_secret = 'Rendez vous dans la salle de classe';
+
+    function checkCode(event) {
+      event.preventDefault();
+      const input = document.getElementById('codeInput').value.trim().toLowerCase();
+      const codex = document.getElementById('codex');
+
+      if (codes_valides.includes(input)) {
+        codex.innerHTML = `
+          <p>Alexandre Dumas, redoutable combattant originaire de Cergy, s'est illustré par sa bravoure exceptionnelle et ses talents stratégiques lors des affrontements locaux. Surnommé "le Lion de Cergy", il a bâti sa réputation sur de nombreuses victoires décisives qui ont marqué l'histoire de la région. Au-delà de ses prouesses au combat, Dumas était respecté pour son engagement social et son soutien aux causes justes, laissant derrière lui un héritage qui inspire encore aujourd'hui les habitants de Cergy..</p>
+          <p class="secret-word">${mot_secret}</p>
+          <div class="historical-note">
+          </div>
+        
+        `;
+      } else {
+        codex.innerHTML = `
+          <p class="error-message">Le mécanisme refuse de s'ouvrir.</p>
+          <p>Le Codex reste scellé et ses secrets inaccessibles...</p>
+          <p>Peut-être avez-vous mal déchiffré l'indice ?</p>
+        `;
+      }
+    }
+  </script>
+</body>
+
+</html>
